@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.socialapppro.mapper.MajorsMapper">
+    <select id="list" resultType="com.socialapppro.domain.entity.Majors">
+        select *from majors m
+        <where >
+            <if test="schoolId!=null">
+                m.major_id IN(
+                SELECT cm.major_id
+                FROM collegemajors cm
+                WHERE cm.college_id=#{collegeId}
+                )
+            </if>
+        </where>
+    </select>
+</mapper>

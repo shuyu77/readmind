@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.socialapppro.mapper.CollegesMapper">
+
+    <select id="list" resultType="com.socialapppro.domain.entity.Colleges">
+        select *from colleges c
+        <where >
+            <if test="schoolId!=null">
+                c.college_id IN(
+                SELECT sc.college_id
+                FROM schoolcolleges sc
+                WHERE sc.school_id=#{schoolId}
+                )
+            </if>
+        </where>
+    </select>
+<!--    <select id="listConfirm" resultType="com.socialapppro.domain.entity.Colleges">-->
+<!--        -->
+<!--    </select>-->
+
+</mapper>

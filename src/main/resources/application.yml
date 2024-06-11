@@ -1,0 +1,16 @@
+# DataSource Config 自己填写账号密码，数据库
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username:
+    password:
+    url: jdbc:mysql://localhost:3306/
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: com/socialapppro/mapper/xml/*.xml
+server:
+  port: 8181
+images:
+  path: /www/image/social/
